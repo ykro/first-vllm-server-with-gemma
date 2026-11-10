@@ -123,5 +123,10 @@ diagrams/        los tres diagramas (HTML, SVG y PNG)
 
 ## Videos y artículos
 
-- **YouTube**: Próximamente.
-- **Substack (`ykro1.substack.com`)**: Próximamente.
+- **Práctica en YouTube**: [Tu primer servidor vLLM con Gemma, de la API a tu propia GPU en Cloud Run](https://youtu.be/2F6IwxzK4YI)
+- **Artículos en Substack**:
+  1. [Tu modelo es un endpoint HTTP](https://ykro1.substack.com/p/tu-modelo-es-un-endpoint-http)
+  2. [Mismo código, otro servidor](https://ykro1.substack.com/p/mismo-codigo-otro-servidor)
+  3. [La primera palabra a los 0.29 segundos](https://ykro1.substack.com/p/la-primera-palabra-a-los-029-segundos)
+  4. [Leer es barato, escribir es caro](https://ykro1.substack.com/p/leer-es-barato-escribir-es-caro)
+  5. [Cuánto cuesta un millón de tokens en tu propia GPU](https://ykro1.substack.com/p/cuanto-cuesta-un-millon-de-tokens)
