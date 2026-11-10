@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T18:14:25+00:00",
+  "generated_at": "2026-11-10T18:20:59+00:00",
   "vllm_version": "0.33.0",
   "experiments": {
     "01_hello_vllm_over_http": {
@@ -27,7 +27,7 @@
         "prompt_tokens_details": null,
         "completion_tokens_details": null
       },
-      "wall_s": 1.452
+      "wall_s": 1.502
     },
     "02_same_code_any_provider": {
       "base_url": "http://localhost:8000/v1",
@@ -35,58 +35,58 @@
       "repeatable": true
     },
     "03_streaming_ttft": {
-      "blocking_wait_s": 7.495,
-      "streaming_ttft_s": 0.3,
-      "streaming_total_s": 8.021,
-      "completion_tokens": 200,
-      "stream_chunks": 200,
-      "decode_tokens_per_s": 25.8,
+      "blocking_wait_s": 7.787,
+      "streaming_ttft_s": 0.292,
+      "streaming_total_s": 7.925,
+      "completion_tokens": 196,
+      "stream_chunks": 195,
+      "decode_tokens_per_s": 25.5,
       "first_words": "Para un desarrollador backend, un **token** en un modelo de lenguaje (LLM) es la unidad atómica de información que el mo",
-      "first_word_sooner_x": 25.0
+      "first_word_sooner_x": 26.7
     },
     "04_prefill_vs_decode": {
       "prefill_sweep": [
         {
-          "prompt_tokens": 104,
-          "ttft_s": 0.2995,
-          "prefill_tokens_per_s": 347
+          "prompt_tokens": 102,
+          "ttft_s": 0.3076,
+          "prefill_tokens_per_s": 332
         },
         {
-          "prompt_tokens": 752,
-          "ttft_s": 0.3991,
-          "prefill_tokens_per_s": 1884
+          "prompt_tokens": 751,
+          "ttft_s": 0.4013,
+          "prefill_tokens_per_s": 1872
         },
         {
           "prompt_tokens": 2910,
-          "ttft_s": 0.8384,
-          "prefill_tokens_per_s": 3471
+          "ttft_s": 0.8311,
+          "prefill_tokens_per_s": 3501
         },
         {
-          "prompt_tokens": 7230,
-          "ttft_s": 1.8333,
-          "prefill_tokens_per_s": 3944
+          "prompt_tokens": 7231,
+          "ttft_s": 1.8191,
+          "prefill_tokens_per_s": 3975
         }
       ],
       "decode_sweep": [
         {
           "completion_tokens": 16,
-          "total_s": 0.873,
-          "decode_tokens_per_s": 26.2
+          "total_s": 0.867,
+          "decode_tokens_per_s": 26.0
         },
         {
           "completion_tokens": 64,
-          "total_s": 2.726,
-          "decode_tokens_per_s": 26.4
+          "total_s": 2.72,
+          "decode_tokens_per_s": 27.0
         },
         {
           "completion_tokens": 256,
-          "total_s": 10.118,
-          "decode_tokens_per_s": 26.1
+          "total_s": 10.113,
+          "decode_tokens_per_s": 26.0
         }
       ],
-      "ttft_floor_s": 0.2995,
-      "prefill_marginal_tokens_per_s": 4646,
-      "prefill_vs_decode_x": 178.0
+      "ttft_floor_s": 0.3076,
+      "prefill_marginal_tokens_per_s": 4717,
+      "prefill_vs_decode_x": 181.4
     },
     "05_cost_per_million_tokens": {
       "instance": "Cloud Run, 1 NVIDIA L4 (sin redundancia zonal), 8 vCPU, 32 GiB, instance-based billing",
@@ -100,8 +100,8 @@
         },
         {
           "users": 8,
-          "output_tokens_per_s": 193.0,
-          "usd_per_million_output_tokens": 2.04
+          "output_tokens_per_s": 192.0,
+          "usd_per_million_output_tokens": 2.06
         }
       ],
       "eight_users_gain_x": 7.6

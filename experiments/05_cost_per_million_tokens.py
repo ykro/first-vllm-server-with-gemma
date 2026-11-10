@@ -4,7 +4,7 @@ Measures generated tokens per second with 1 user and with 8 users at the same ti
 turns that into dollars per million output tokens using the hourly price of the Cloud Run
 instance (benchmarks/pricing.json, a list price you should re-check). One user leaves the
 GPU mostly idle; with eight, the same instance writes several times more tokens per hour.
-That gap is the topic of C3.
+That gap is the topic of many-users-one-gpu-with-vllm.
 
     python experiments/05_cost_per_million_tokens.py [--mock]
 """

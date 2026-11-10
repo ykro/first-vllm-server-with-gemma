@@ -20,12 +20,12 @@
 </head>
 <body>
   <div class="frame">
-    <p class="eyebrow">Arquitectura · Serie C · vLLM Field Guide</p>
+    <p class="eyebrow">Arquitectura · vLLM Field Guide</p>
     <h1>Tu app habla con la misma API de siempre, y del otro lado hay una GPU tuya</h1>
     <div class="diagram-container">
-      <svg viewBox="0 0 1040 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="c1-anatomy-title c1-anatomy-desc">
-        <title id="c1-anatomy-title">Anatomía de un servidor vLLM con Gemma en Cloud Run</title>
-        <desc id="c1-anatomy-desc">La aplicación usa el cliente de OpenAI contra localhost, un túnel de gcloud firma la petición y la manda a Cloud Run, donde vLLM recibe HTTP y ejecuta Gemma en una GPU L4 cuya memoria se reparte entre los pesos, leídos desde Cloud Storage, y el KV-cache.</desc>
+      <svg viewBox="0 0 1040 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="anatomy-title anatomy-desc">
+        <title id="anatomy-title">Anatomía de un servidor vLLM con Gemma en Cloud Run</title>
+        <desc id="anatomy-desc">La aplicación usa el cliente de OpenAI contra localhost, un túnel de gcloud firma la petición y la manda a Cloud Run, donde vLLM recibe HTTP y ejecuta Gemma en una GPU L4 cuya memoria se reparte entre los pesos, leídos desde Cloud Storage, y el KV-cache.</desc>
         <defs>
           <marker id="c1a-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#3B5B8C"/></marker>
           <marker id="c1a-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#C59216"/></marker>

@@ -22,7 +22,7 @@ MODEL = os.environ.get("VLLM_MODEL_NAME", "gemma")
 def fresh(prompt: str) -> str:
     """Gives a prompt a unique first line.
 
-    vLLM keeps the KV-cache of prompts it already read (prefix caching, unit C3). A second
+    vLLM keeps the KV-cache of prompts it already read (prefix caching, see many-users-one-gpu-with-vllm). A second
     request that starts with the same text skips most of the prefill and looks faster than it
     is. Timing experiments start every prompt with a random id so each one is read from zero.
     """

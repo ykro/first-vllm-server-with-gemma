@@ -1,4 +1,4 @@
-"""The Outside Judge for C1: runs the five experiments once and checks what must hold.
+"""The Outside Judge for your first vLLM server: runs the five experiments once and checks what must hold.
 
     python verify_first_server.py          # live vLLM through the tunnel (real numbers)
     python verify_first_server.py --mock   # fake server, checks the logic without a GPU

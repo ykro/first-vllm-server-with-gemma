@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 1040 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="c1-anatomy-title c1-anatomy-desc" id="d-01-inference-server-anatomy-root">
-        <title id="c1-anatomy-title">Anatomía de un servidor vLLM con Gemma en Cloud Run</title>
-        <desc id="c1-anatomy-desc">La aplicación usa el cliente de OpenAI contra localhost, un túnel de gcloud firma la petición y la manda a Cloud Run, donde vLLM recibe HTTP y ejecuta Gemma en una GPU L4 cuya memoria se reparte entre los pesos, leídos desde Cloud Storage, y el KV-cache.</desc>
+<svg viewBox="0 0 1040 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="anatomy-title anatomy-desc" id="d-01-inference-server-anatomy-root">
+        <title id="anatomy-title">Anatomía de un servidor vLLM con Gemma en Cloud Run</title>
+        <desc id="anatomy-desc">La aplicación usa el cliente de OpenAI contra localhost, un túnel de gcloud firma la petición y la manda a Cloud Run, donde vLLM recibe HTTP y ejecuta Gemma en una GPU L4 cuya memoria se reparte entre los pesos, leídos desde Cloud Storage, y el KV-cache.</desc>
         <defs>
       <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
       #d-01-inference-server-anatomy-root { font-family: 'Geist', system-ui, sans-serif; color: #0F2547; }

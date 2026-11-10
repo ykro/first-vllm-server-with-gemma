@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 1040 432" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="c1-cost-title c1-cost-desc" id="d-03-cost-per-million-tokens-root">
-        <title id="c1-cost-title">Costo por millón de tokens de salida</title>
-        <desc id="c1-cost-desc">Costo por millón de tokens de salida de Gemma 4 E4B en vLLM sobre una L4 con uno y con ocho usuarios a la vez, comparado con el precio de lista de gemini-3.8-flash hoy y desde 2027.</desc>
+<svg viewBox="0 0 1040 432" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cost-title cost-desc" id="d-03-cost-per-million-tokens-root">
+        <title id="cost-title">Costo por millón de tokens de salida</title>
+        <desc id="cost-desc">Costo por millón de tokens de salida de Gemma 4 E4B en vLLM sobre una L4 con uno y con ocho usuarios a la vez, comparado con el precio de lista de gemini-3.8-flash hoy y desde 2027.</desc>
   <defs>
       <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
       #d-03-cost-per-million-tokens-root { font-family: 'Geist', system-ui, sans-serif; color: #0F2547; }
@@ -11,9 +11,9 @@
         <text x="40" y="80" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">vLLM, 1 usuario a la vez</text><text x="40" y="96" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">25.3 tokens/s</text>
         <rect x="320" y="64" width="585.0" height="36" rx="3" fill="#0f2547" fill-opacity="0.10" stroke="#3B5B8C"/>
         <text x="915.0" y="87" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist Mono', monospace">$15.60</text>
-        <text x="40" y="152" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">vLLM, 8 usuarios a la vez</text><text x="40" y="168" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">193 tokens/s</text>
-        <rect x="320" y="136" width="76.5" height="36" rx="3" fill="#c59216" fill-opacity="0.18" stroke="#C59216"/>
-        <text x="406.5" y="159" fill="#9A6F0B" font-size="12" font-weight="600" font-family="'Geist Mono', monospace">$2.04</text>
+        <text x="40" y="152" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">vLLM, 8 usuarios a la vez</text><text x="40" y="168" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">192 tokens/s</text>
+        <rect x="320" y="136" width="77.2" height="36" rx="3" fill="#c59216" fill-opacity="0.18" stroke="#C59216"/>
+        <text x="407.2" y="159" fill="#9A6F0B" font-size="12" font-weight="600" font-family="'Geist Mono', monospace">$2.06</text>
         <text x="40" y="224" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">gemini-3.8-flash, 2027</text><text x="40" y="240" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">precio de lista</text>
         <rect x="320" y="208" width="281.2" height="36" rx="3" fill="#0f2547" fill-opacity="0.04" stroke="#0f2547" stroke-opacity="0.35" stroke-dasharray="4,3"/>
         <text x="611.2" y="231" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist Mono', monospace">$7.50</text>
