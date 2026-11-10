@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Costo por millón de tokens · Bar chart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Geist', system-ui, sans-serif; background: #F7F6F2; color: #0F2547;
+           min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2.5rem 2rem; }
+    .frame { max-width: 1120px; width: 100%; }
+    .diagram-container { width: 100%; overflow-x: auto; }
+    .eyebrow { font-family: 'Geist Mono', monospace; font-size: 0.66rem; font-weight: 500; letter-spacing: 0.18em;
+               text-transform: uppercase; color: #3B5B8C; margin-bottom: 0.5rem; }
+    h1 { font-family: 'Instrument Serif', serif; font-size: clamp(1.5rem, 2.4vw + 0.75rem, 2rem); font-weight: 400;
+         letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.5rem; }
+    svg { width: 100%; min-width: 1040px; display: block; }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Bar chart · C1 · vLLM Field Guide</p>
+    <h1>Tu GPU cobra por hora, así que el millón de tokens sale tan barato como la llenes</h1>
+    <div class="diagram-container">
+      <svg viewBox="0 0 1040 432" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="c1-cost-title c1-cost-desc">
+        <title id="c1-cost-title">Costo por millón de tokens de salida</title>
+        <desc id="c1-cost-desc">Costo por millón de tokens de salida de Gemma 4 E4B en vLLM sobre una L4 con uno y con ocho usuarios a la vez, comparado con el precio de lista de gemini-3.8-flash hoy y desde 2027.</desc>
+        <rect width="1040" height="432" fill="#F7F6F2"/>
+        <text x="40" y="80" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">vLLM, 1 usuario a la vez</text><text x="40" y="96" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">25.3 tokens/s</text>
+        <rect x="320" y="64" width="585.0" height="36" rx="3" fill="rgba(15,37,71,0.10)" stroke="#3B5B8C"/>
+        <text x="915.0" y="87" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist Mono', monospace">$15.60</text>
+        <text x="40" y="152" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">vLLM, 8 usuarios a la vez</text><text x="40" y="168" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">193 tokens/s</text>
+        <rect x="320" y="136" width="76.5" height="36" rx="3" fill="rgba(197,146,22,0.18)" stroke="#C59216"/>
+        <text x="406.5" y="159" fill="#9A6F0B" font-size="12" font-weight="600" font-family="'Geist Mono', monospace">$2.04</text>
+        <text x="40" y="224" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">gemini-3.8-flash, 2027</text><text x="40" y="240" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">precio de lista</text>
+        <rect x="320" y="208" width="281.2" height="36" rx="3" fill="rgba(15,37,71,0.04)" stroke="rgba(15,37,71,0.35)" stroke-dasharray="4,3"/>
+        <text x="611.2" y="231" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist Mono', monospace">$7.50</text>
+        <text x="40" y="296" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">gemini-3.8-flash, hoy</text><text x="40" y="312" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">precio de lista hasta dic 2026</text>
+        <rect x="320" y="280" width="140.6" height="36" rx="3" fill="rgba(15,37,71,0.04)" stroke="rgba(15,37,71,0.35)" stroke-dasharray="4,3"/>
+        <text x="470.6" y="303" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist Mono', monospace">$3.75</text>
+        <text x="40" y="364" fill="#3B5B8C" font-size="14" font-style="italic" font-family="'Instrument Serif', serif">La misma hora de GPU, a USD 1.42, rinde 7.6 veces más tokens con ocho usuarios que con uno.</text>
+        <line x1="40" y1="392" x2="1000" y2="392" stroke="rgba(15,37,71,0.10)" stroke-width="0.8"/><text x="40" y="412" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">LEYENDA</text>
+        <rect x="120" y="404" width="12" height="10" rx="2" fill="rgba(15,37,71,0.04)" stroke="rgba(15,37,71,0.35)" stroke-dasharray="3,2"/><text x="138" y="412" fill="#0F2547" font-size="9" font-family="'Geist', sans-serif">API administrada, modelo más capaz, solo de referencia</text>
+        <text x="520" y="412" fill="#0F2547" font-size="9" font-family="'Geist', sans-serif">USD por millón de tokens de salida · precios consultados el 2026-11-10</text>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

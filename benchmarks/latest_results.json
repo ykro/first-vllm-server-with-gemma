@@ -1,0 +1,117 @@
+{
+  "generated_at": "2026-11-10T18:14:25+00:00",
+  "vllm_version": "0.33.0",
+  "experiments": {
+    "01_hello_vllm_over_http": {
+      "served_model_name": "gemma",
+      "weights": "/models/google/gemma-4-E4B-it",
+      "max_model_len": 8192,
+      "request": {
+        "model": "gemma",
+        "messages": [
+          {
+            "role": "user",
+            "content": "En una frase, ¿qué hace un servidor de inferencia?"
+          }
+        ],
+        "max_tokens": 80,
+        "temperature": 0,
+        "seed": 7
+      },
+      "answer": "Un servidor de inferencia **ejecuta modelos de inteligencia artificial entrenados para hacer predicciones o tomar decisiones a partir de nuevos datos de entrada**.",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 22,
+        "total_tokens": 53,
+        "completion_tokens": 31,
+        "prompt_tokens_details": null,
+        "completion_tokens_details": null
+      },
+      "wall_s": 1.452
+    },
+    "02_same_code_any_provider": {
+      "base_url": "http://localhost:8000/v1",
+      "summary": "**Audífonos defectuosos (lado izquierdo sin sonido) - Solicita cambio.**",
+      "repeatable": true
+    },
+    "03_streaming_ttft": {
+      "blocking_wait_s": 7.495,
+      "streaming_ttft_s": 0.3,
+      "streaming_total_s": 8.021,
+      "completion_tokens": 200,
+      "stream_chunks": 200,
+      "decode_tokens_per_s": 25.8,
+      "first_words": "Para un desarrollador backend, un **token** en un modelo de lenguaje (LLM) es la unidad atómica de información que el mo",
+      "first_word_sooner_x": 25.0
+    },
+    "04_prefill_vs_decode": {
+      "prefill_sweep": [
+        {
+          "prompt_tokens": 104,
+          "ttft_s": 0.2995,
+          "prefill_tokens_per_s": 347
+        },
+        {
+          "prompt_tokens": 752,
+          "ttft_s": 0.3991,
+          "prefill_tokens_per_s": 1884
+        },
+        {
+          "prompt_tokens": 2910,
+          "ttft_s": 0.8384,
+          "prefill_tokens_per_s": 3471
+        },
+        {
+          "prompt_tokens": 7230,
+          "ttft_s": 1.8333,
+          "prefill_tokens_per_s": 3944
+        }
+      ],
+      "decode_sweep": [
+        {
+          "completion_tokens": 16,
+          "total_s": 0.873,
+          "decode_tokens_per_s": 26.2
+        },
+        {
+          "completion_tokens": 64,
+          "total_s": 2.726,
+          "decode_tokens_per_s": 26.4
+        },
+        {
+          "completion_tokens": 256,
+          "total_s": 10.118,
+          "decode_tokens_per_s": 26.1
+        }
+      ],
+      "ttft_floor_s": 0.2995,
+      "prefill_marginal_tokens_per_s": 4646,
+      "prefill_vs_decode_x": 178.0
+    },
+    "05_cost_per_million_tokens": {
+      "instance": "Cloud Run, 1 NVIDIA L4 (sin redundancia zonal), 8 vCPU, 32 GiB, instance-based billing",
+      "usd_per_hour": 1.4209,
+      "price_checked": "2026-11-10",
+      "rows": [
+        {
+          "users": 1,
+          "output_tokens_per_s": 25.3,
+          "usd_per_million_output_tokens": 15.6
+        },
+        {
+          "users": 8,
+          "output_tokens_per_s": 193.0,
+          "usd_per_million_output_tokens": 2.04
+        }
+      ],
+      "eight_users_gain_x": 7.6
+    }
+  },
+  "checks": {
+    "01. Model over plain HTTP": true,
+    "02. Same code, OpenAI SDK": true,
+    "03. Streaming vs blocking": true,
+    "04. Prefill vs decode": true,
+    "05. Cost per 1M output tokens": true
+  }
+}

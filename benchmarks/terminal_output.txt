@@ -1,0 +1,18 @@
+====================================================================================================
+THE OUTSIDE JUDGE — Your First vLLM Server with Gemma
+====================================================================================================
+Mode    : live
+Server  : vLLM 0.33.0 | model /models/google/gemma-4-E4B-it served as 'gemma' | max_model_len 8192
+Client  : Python 3.12.11 | Darwin arm64
+----------------------------------------------------------------------------------------------------
+Experiment                       | Measured                           | Result               | Check
+----------------------------------------------------------------------------------------------------
+01. Model over plain HTTP        | gemma (53 tok)                     | 1.45 s               | PASS
+02. Same code, OpenAI SDK        | summary at temperature 0           | repeatable           | PASS
+03. Streaming vs blocking        | TTFT 0.300 s                       | 25.8 tok/s           | PASS
+04. Prefill vs decode            | 104->7230 tok: 0.299->1.833 s      | read 178x faster     | PASS
+05. Cost per 1M output tokens    | 1 user $15.60                      | 8 users $2.04        | PASS
+----------------------------------------------------------------------------------------------------
+Times include the network round trip through the tunnel and vary run to run.
+Prices: Cloud Run, 1 NVIDIA L4 (sin redundancia zonal), 8 vCPU, 32 GiB, instance-based billing, $1.4209/h list price checked 2026-11-10.
+ALL CHECKS PASSED.

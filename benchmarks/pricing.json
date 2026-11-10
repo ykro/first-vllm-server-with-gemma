@@ -1,0 +1,12 @@
+{
+  "instance": "Cloud Run, 1 NVIDIA L4 (sin redundancia zonal), 8 vCPU, 32 GiB, instance-based billing",
+  "usd_per_second": {
+    "gpu_l4": 0.0001867,
+    "cpu_8_vcpu": 0.000144,
+    "memory_32_gib": 6.4e-05
+  },
+  "usd_per_hour": 1.4209,
+  "checked": "2026-11-10",
+  "source": "https://cloud.google.com/run/pricing",
+  "note": "Precio de lista Tier 1, sin descuentos ni capa gratuita. Revisa la página antes de decidir; cambia por región y con el tiempo."
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1040 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="c1-anatomy-title c1-anatomy-desc" id="d-01-inference-server-anatomy-root">
+        <title id="c1-anatomy-title">Anatomía de un servidor vLLM con Gemma en Cloud Run</title>
+        <desc id="c1-anatomy-desc">La aplicación usa el cliente de OpenAI contra localhost, un túnel de gcloud firma la petición y la manda a Cloud Run, donde vLLM recibe HTTP y ejecuta Gemma en una GPU L4 cuya memoria se reparte entre los pesos, leídos desde Cloud Storage, y el KV-cache.</desc>
+        <defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #d-01-inference-server-anatomy-root { font-family: 'Geist', system-ui, sans-serif; color: #0F2547; }
+      #d-01-inference-server-anatomy-root .diagram-container { width: 100%; overflow-x: auto; }</style>
+          <marker id="d-01-inference-server-anatomy-c1a-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#3B5B8C"/></marker>
+          <marker id="d-01-inference-server-anatomy-c1a-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#C59216"/></marker>
+        </defs>
+        <rect width="1040" height="520" fill="#F7F6F2"/>
+
+        <!-- Zones (painted first) -->
+        <rect x="448" y="48" width="552" height="292" rx="8" fill="#0f2547" fill-opacity="0.02" stroke="#0f2547" stroke-opacity="0.30" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="464" y="70" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">CLOUD RUN · US-EAST4 · MIN-INSTANCES 0</text>
+
+        <!-- Connectors (before boxes) -->
+        <line x1="200" y1="208" x2="244" y2="208" stroke="#3B5B8C" stroke-width="1.2" marker-end="url(#d-01-inference-server-anatomy-c1a-arrow)"/>
+        <line x1="408" y1="208" x2="476" y2="208" stroke="#3B5B8C" stroke-width="1.2" marker-end="url(#d-01-inference-server-anatomy-c1a-arrow)"/>
+        <line x1="660" y1="208" x2="716" y2="208" stroke="#C59216" stroke-width="1.5" marker-end="url(#d-01-inference-server-anatomy-c1a-arrow-accent)"/>
+        <line x1="840" y1="404" x2="840" y2="300" stroke="#3B5B8C" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#d-01-inference-server-anatomy-c1a-arrow)"/>
+
+        <!-- Connector labels -->
+        <rect x="412" y="180" width="60" height="12" rx="2" fill="#F7F6F2"/>
+        <text x="442" y="189" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">HTTPS+IAM</text>
+        <rect x="664" y="180" width="48" height="12" rx="2" fill="#F7F6F2"/>
+        <text x="688" y="189" fill="#9A6F0B" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">TOKENS</text>
+        <rect x="852" y="346" width="112" height="12" rx="2" fill="#F7F6F2"/>
+        <text x="908" y="355" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">MOUNT /MODELS</text>
+
+        <!-- Node: app -->
+        <rect x="40" y="168" width="160" height="80" rx="6" fill="#3b5b8c" fill-opacity="0.10" stroke="#3B5B8C" stroke-width="1"/>
+        <rect x="48" y="176" width="32" height="12" rx="2" fill="none" stroke="#3b5b8c" stroke-opacity="0.5" stroke-width="0.8"/>
+        <text x="64" y="185" fill="#3B5B8C" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">APP</text>
+        <text x="120" y="212" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Tu aplicación</text>
+        <text x="120" y="228" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">OpenAI SDK</text>
+        <text x="120" y="240" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">localhost:8000/v1</text>
+
+        <!-- Node: tunnel -->
+        <rect x="248" y="168" width="160" height="80" rx="6" fill="#FFFFFF" stroke="#0F2547" stroke-width="1"/>
+        <rect x="256" y="176" width="40" height="12" rx="2" fill="none" stroke="#0f2547" stroke-opacity="0.4" stroke-width="0.8"/>
+        <text x="276" y="185" fill="#3B5B8C" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">LOCAL</text>
+        <text x="328" y="212" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Túnel de gcloud</text>
+        <text x="328" y="228" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">run services proxy</text>
+        <text x="328" y="240" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">sin API key</text>
+
+        <!-- Node: vLLM server (focal) -->
+        <rect x="480" y="160" width="180" height="96" rx="6" fill="#c59216" fill-opacity="0.10" stroke="#C59216" stroke-width="1.2"/>
+        <rect x="488" y="168" width="40" height="12" rx="2" fill="none" stroke="#c59216" stroke-opacity="0.6" stroke-width="0.8"/>
+        <text x="508" y="177" fill="#9A6F0B" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">VLLM</text>
+        <text x="570" y="204" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Servidor de inferencia</text>
+        <text x="570" y="220" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">/v1/chat/completions</text>
+        <text x="570" y="232" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">/v1/models · /health</text>
+        <text x="570" y="244" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">vllm 0.33.0</text>
+
+        <!-- Node: GPU with memory split -->
+        <rect x="720" y="112" width="240" height="188" rx="6" fill="#FFFFFF" stroke="#0F2547" stroke-width="1"/>
+        <rect x="728" y="120" width="28" height="12" rx="2" fill="none" stroke="#0f2547" stroke-opacity="0.4" stroke-width="0.8"/>
+        <text x="742" y="129" fill="#3B5B8C" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">GPU</text>
+        <text x="840" y="152" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">NVIDIA L4 · 24 GB</text>
+        <rect x="744" y="168" width="192" height="52" rx="4" fill="#0f2547" fill-opacity="0.06" stroke="#3B5B8C" stroke-width="1"/>
+        <text x="840" y="190" fill="#0F2547" font-size="11" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Pesos de Gemma 4 E4B</text>
+        <text x="840" y="206" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">~15 GiB bf16</text>
+        <rect x="744" y="228" width="192" height="56" rx="4" fill="#c59216" fill-opacity="0.12" stroke="#C59216" stroke-width="1"/>
+        <text x="840" y="252" fill="#0F2547" font-size="11" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">KV-cache</text>
+        <text x="840" y="268" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">lo que queda, para el contexto</text>
+
+        <!-- Node: Cloud Storage -->
+        <rect x="760" y="404" width="160" height="64" rx="6" fill="#0f2547" fill-opacity="0.05" stroke="#3B5B8C" stroke-width="1"/>
+        <rect x="768" y="412" width="40" height="12" rx="2" fill="none" stroke="#3b5b8c" stroke-opacity="0.5" stroke-width="0.8"/>
+        <text x="788" y="421" fill="#3B5B8C" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">STORE</text>
+        <text x="840" y="444" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Cloud Storage</text>
+        <text x="840" y="459" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">pesos, copiados una vez</text>
+
+        <!-- Aside -->
+        <text x="40" y="300" fill="#3B5B8C" font-size="14" font-style="italic" font-family="'Instrument Serif', serif">Lo único que cambia en tu código es el base_url.</text>
+
+        <!-- Legend -->
+        <line x1="30" y1="492" x2="1010" y2="492" stroke="#0f2547" stroke-opacity="0.10" stroke-width="0.8"/>
+        <text x="30" y="510" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">LEYENDA</text>
+        <rect x="110" y="502" width="12" height="10" rx="2" fill="#c59216" fill-opacity="0.12" stroke="#C59216"/>
+        <text x="128" y="510" fill="#0F2547" font-size="9" font-family="'Geist', sans-serif">foco: vLLM y el KV-cache</text>
+        <line x1="290" y1="507" x2="318" y2="507" stroke="#3B5B8C" stroke-width="1.2" stroke-dasharray="5,4"/>
+        <text x="326" y="510" fill="#0F2547" font-size="9" font-family="'Geist', sans-serif">volumen de solo lectura</text>
+        <rect x="490" y="502" width="12" height="10" rx="2" fill="none" stroke="#0f2547" stroke-opacity="0.30" stroke-dasharray="3,2"/>
+        <text x="508" y="510" fill="#0F2547" font-size="9" font-family="'Geist', sans-serif">instancia on-demand, se apaga sola</text>
+      </svg>

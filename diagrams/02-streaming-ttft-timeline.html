@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Streaming y tiempo al primer token · Timeline</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Geist', system-ui, sans-serif; background: #F7F6F2; color: #0F2547;
+           min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2.5rem 2rem; }
+    .frame { max-width: 1120px; width: 100%; }
+    .diagram-container { width: 100%; overflow-x: auto; }
+    .eyebrow { font-family: 'Geist Mono', monospace; font-size: 0.66rem; font-weight: 500; letter-spacing: 0.18em;
+               text-transform: uppercase; color: #3B5B8C; margin-bottom: 0.5rem; }
+    h1 { font-family: 'Instrument Serif', serif; font-size: clamp(1.5rem, 2.4vw + 0.75rem, 2rem); font-weight: 400;
+         letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.5rem; }
+    svg { width: 100%; min-width: 1040px; display: block; }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Timeline · C1 · vLLM Field Guide</p>
+    <h1>Con streaming la primera palabra llega a los 0.30 s, sin streaming a los 7.5 s</h1>
+    <div class="diagram-container">
+      <svg viewBox="0 0 1040 436" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="c1-ttft-title c1-ttft-desc">
+        <title id="c1-ttft-title">Tiempo al primer token con y sin streaming</title>
+        <desc id="c1-ttft-desc">La misma respuesta de 200 tokens pedida dos veces a Gemma 4 E4B en una L4: sin streaming el texto aparece completo a los 7.5 segundos; con streaming el primer token llega a los 0.30 segundos y el resto a unos 26 tokens por segundo.</desc>
+        <rect width="1040" height="436" fill="#F7F6F2"/>
+        <line x1="200" y1="300" x2="1000" y2="300" stroke="rgba(15,37,71,0.30)" stroke-width="1"/>
+        <line x1="200.0" y1="300" x2="200.0" y2="306" stroke="rgba(15,37,71,0.30)"/><text x="200.0" y="320" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">0 s</text>
+        <line x1="300.0" y1="300" x2="300.0" y2="306" stroke="rgba(15,37,71,0.30)"/><text x="300.0" y="320" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">1 s</text>
+        <line x1="400.0" y1="300" x2="400.0" y2="306" stroke="rgba(15,37,71,0.30)"/><text x="400.0" y="320" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">2 s</text>
+        <line x1="500.0" y1="300" x2="500.0" y2="306" stroke="rgba(15,37,71,0.30)"/><text x="500.0" y="320" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">3 s</text>
+        <line x1="600.0" y1="300" x2="600.0" y2="306" stroke="rgba(15,37,71,0.30)"/><text x="600.0" y="320" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">4 s</text>
+        <line x1="700.0" y1="300" x2="700.0" y2="306" stroke="rgba(15,37,71,0.30)"/><text x="700.0" y="320" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">5 s</text>
+        <line x1="800.0" y1="300" x2="800.0" y2="306" stroke="rgba(15,37,71,0.30)"/><text x="800.0" y="320" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">6 s</text>
+        <line x1="900.0" y1="300" x2="900.0" y2="306" stroke="rgba(15,37,71,0.30)"/><text x="900.0" y="320" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">7 s</text>
+        <line x1="1000.0" y1="300" x2="1000.0" y2="306" stroke="rgba(15,37,71,0.30)"/><text x="1000.0" y="320" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">8 s</text>
+        <text x="40" y="112" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">Sin streaming</text><text x="40" y="128" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">espera la respuesta entera</text>
+        <rect x="200" y="96" width="749.5" height="36" rx="4" fill="rgba(15,37,71,0.03)" stroke="rgba(15,37,71,0.25)" stroke-dasharray="4,3"/>
+        <text x="574.8" y="118" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">pantalla vacía</text>
+        <rect x="949.5" y="96" width="50.5" height="36" rx="4" fill="#0F2547"/>
+        <text x="943.5" y="88" fill="#0F2547" font-size="9" font-family="'Geist Mono', monospace" text-anchor="end">todo el texto a los 7.5 s</text>
+        <text x="40" y="208" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">Con streaming</text><text x="40" y="224" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">un token a la vez</text>
+        <rect x="200" y="192" width="30.0" height="36" rx="3" fill="rgba(197,146,22,0.25)" stroke="#C59216"/>
+        <rect x="230.0" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="245.5" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="261.0" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="276.5" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="292.0" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="307.5" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="323.0" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="338.5" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="354.0" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="369.5" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="385.0" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="400.5" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="416.0" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="431.6" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="447.1" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="462.6" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="478.1" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="493.6" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="509.1" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="524.6" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="540.1" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="555.6" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="571.1" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="586.6" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="602.1" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="617.6" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="633.1" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="648.6" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="664.1" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="679.6" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="695.1" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="710.6" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="726.1" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="741.6" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="757.1" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="772.6" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="788.1" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="803.6" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="819.1" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="834.7" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="850.2" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="865.7" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="881.2" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="896.7" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="912.2" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="927.7" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="943.2" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="958.7" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="974.2" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <rect x="989.7" y="196" width="2.4" height="28" fill="#3B5B8C"/>
+        <line x1="230.0" y1="184" x2="230.0" y2="236" stroke="#C59216" stroke-width="1.5"/>
+        <rect x="238.0" y="164" width="232" height="14" rx="2" fill="#F7F6F2"/><text x="242.0" y="174" fill="#9A6F0B" font-size="9" font-weight="600" font-family="'Geist Mono', monospace">TTFT 0.30 s · primera palabra 25x antes</text>
+        <text x="620.0" y="252" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">decode: 200 tokens a 25.8 tokens/s</text>
+        <text x="40" y="368" fill="#3B5B8C" font-size="14" font-style="italic" font-family="'Instrument Serif', serif">El tiempo total es casi el mismo. Lo que cambia es cuándo ve algo tu usuario.</text>
+        <line x1="40" y1="396" x2="1000" y2="396" stroke="rgba(15,37,71,0.10)" stroke-width="0.8"/><text x="40" y="416" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">LEYENDA</text>
+        <rect x="120" y="408" width="12" height="10" rx="2" fill="rgba(197,146,22,0.25)" stroke="#C59216"/><text x="138" y="416" fill="#0F2547" font-size="9" font-family="'Geist', sans-serif">prefill y red hasta el primer token</text>
+        <rect x="360" y="408" width="3" height="10" fill="#3B5B8C"/><text x="370" y="416" fill="#0F2547" font-size="9" font-family="'Geist', sans-serif">cada marca son 4 tokens</text>
+        <text x="560" y="416" fill="#0F2547" font-size="9" font-family="'Geist', sans-serif">medido en una L4 con Gemma 4 E4B, 200 tokens de salida</text>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>
