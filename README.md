@@ -96,9 +96,11 @@ Necesitas un proyecto de Google Cloud con cuota de GPU L4 para Cloud Run en la r
 export GCP_PROJECT_ID=tu-proyecto
 make stage        # copia una vez los pesos de Gemma a Cloud Storage (Cloud Build, unos 4 min)
 make deploy       # despliega la imagen oficial de vLLM con una L4, min-instances 0
+make warm         # opcional: mantiene una GPU encendida mientras trabajas (USD 1.42 por hora)
 make tunnel       # en otra terminal: localhost:8000 -> tu servicio
 make verify-live  # el juez contra la GPU real; escribe benchmarks/
-make teardown     # borra el servicio cuando termines
+make cool         # vuelve a min-instances 0 al terminar la sesión
+make teardown     # borra el servicio cuando ya no lo uses
 ```
 
 Cada experimento también corre solo, por ejemplo `python experiments/03_streaming_ttft.py` (o con `--mock`).
