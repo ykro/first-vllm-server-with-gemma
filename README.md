@@ -152,7 +152,7 @@ diagrams/        los tres diagramas (HTML, SVG y PNG)
 
 ## Videos y artículos
 
-- **Práctica en YouTube**: [Tu primer servidor vLLM con Gemma, de la API a tu propia GPU en Cloud Run](https://youtu.be/2F6IwxzK4YI)
+- **Práctica en YouTube**: [Tu primer servidor vLLM con Gemma, escribiendo cada fragmento de `practica/`](https://youtu.be/pYJXpZsEWgg)
 - **Artículos en Substack**:
   1. [Tu modelo es un endpoint HTTP](https://ykro1.substack.com/p/tu-modelo-es-un-endpoint-http)
   2. [Mismo código, otro servidor](https://ykro1.substack.com/p/mismo-codigo-otro-servidor)
