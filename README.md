@@ -3,7 +3,7 @@
 - **Por qué es relevante:** Si ya llamaste una API de IA, ya sabes casi todo. Aquí pones el modelo de tu lado: Gemma 4 corriendo en una GPU tuya en Google Cloud, con la misma API que ya usas. Tu código cambia una línea, el `base_url`, y a cambio ganas control sobre los datos, la versión del modelo y el costo.
 - **Para quién es:** Desarrolladores que saben Python y han llamado una API de IA, pero nunca levantaron un modelo propio. No hace falta machine learning.
 - **Qué vas a medir:** el tiempo al primer token (TTFT), los tokens por segundo, la diferencia entre leer el prompt (prefill) y escribir la respuesta (decode), y cuánto cuesta un millón de tokens con 1 y con 8 usuarios.
-- **Serie completa:** primera unidad del [Field Guide: Servir Modelos Abiertos con vLLM](https://github.com/ykro/vllm-for-software-devs-field-guide).
+- **Ruta completa:** forma parte del [Field Guide: Servir Modelos Abiertos con vLLM](https://github.com/ykro/vllm-for-software-devs-field-guide).
 
 ---
 
@@ -67,10 +67,10 @@ ALL CHECKS PASSED.
 ### Cómo leer estas cifras
 
 - **El piso de red.** El TTFT de un prompt corto (0.31 s) es casi todo ida y vuelta por el túnel y la cola del servidor. Por eso el experimento 04 calcula la velocidad del prefill con la pendiente entre el prompt más corto y el más largo, que descuenta ese piso.
-- **Prefix caching.** vLLM guarda el KV-cache de los prompts que ya leyó y reutiliza los comienzos repetidos. Para medir el prefill real, cada prompt de los experimentos empieza con un identificador único (`fresh()` en `vllm_lab/client.py`). Sin eso, la segunda corrida parece tres veces más rápida. El tema completo está en la tercera unidad del Field Guide (muchos usuarios en una GPU).
+- **Prefix caching.** vLLM guarda el KV-cache de los prompts que ya leyó y reutiliza los comienzos repetidos. Para medir el prefill real, cada prompt de los experimentos empieza con un identificador único (`fresh()` en `vllm_lab/client.py`). Sin eso, la segunda corrida parece tres veces más rápida. El tema completo está en el Field Guide, en el tema de muchos usuarios en una GPU.
 - **Un usuario deja la GPU ociosa.** Con un usuario la L4 escribe 25 tokens/s; con ocho, 192 tokens/s en total, con casi la misma velocidad por usuario. Esa es la razón del precio por millón: la hora cuesta lo mismo.
 - **Precios.** `benchmarks/pricing.json` guarda el precio de lista de Cloud Run (USD 1.42 por hora por la L4, 8 vCPU y 32 GiB, consultado el 2026-11-10) y su fuente. No incluye descuentos ni el tiempo encendido sin tráfico.
-- **Arranque en frío.** Con `min-instances 0`, la primera petición enciende la instancia. En nuestras pruebas tomó entre 8 y 9 minutos: unos 260 s para traer los 15 GiB de pesos (lo mismo desde Hugging Face que desde el bucket montado), unos 55 s de compilación y el resto en preparar el motor. Acelerarlo es parte de la quinta unidad (vLLM en producción).
+- **Arranque en frío.** Con `min-instances 0`, la primera petición enciende la instancia. En nuestras pruebas tomó entre 8 y 9 minutos: unos 260 s para traer los 15 GiB de pesos (lo mismo desde Hugging Face que desde el bucket montado), unos 55 s de compilación y el resto en preparar el motor. Acelerarlo es parte del tema de vLLM en producción.
 
 ---
 
@@ -107,11 +107,40 @@ Cada experimento también corre solo, por ejemplo `python experiments/03_streami
 
 ---
 
+## Práctica, tu servidor a mano
+
+La carpeta `practica/` trae los archivos que se escriben en el video de práctica, cada uno con su test en `tests/test_practica.py`. Todo corre sin GPU contra el servidor falso de `vllm_lab/mock_server.py`, que habla el mismo HTTP que vLLM. Se corren desde la raíz del repositorio con `python3` 3.11 o más nuevo y `curl`. El `python3` que trae macOS de fábrica es 3.9; con él la instalación se detiene y te pide uno más nuevo (por ejemplo, `brew install python`). El servidor falso y `curl` no necesitan instalar nada; para el paquete de OpenAI y para `make all` se usa un entorno virtual.
+
+```bash
+python3 vllm_lab/mock_server.py &       # el servidor falso en localhost:8000, en segundo plano
+curl -i localhost:8000/health           # 200: el servidor está listo
+curl -s localhost:8000/v1/models | python3 -m json.tool
+sh practica/01_pregunta.sh              # una pregunta con curl, el JSON de la API de OpenAI
+grep -A6 '"answer"' benchmarks/latest_results.json   # la misma pregunta en la L4 real
+
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -e ".[dev]"      # openai, pytest y ruff
+python3 practica/02_resumir_roto.py     # falla a propósito: base_url sin /v1 da un 404
+python3 practica/02_resumir.py          # con /v1: el mismo código que usarías con una API
+python3 practica/03_streaming.py        # tiempo al primer token (TTFT) y tokens por segundo
+grep -A8 '"03_streaming_ttft"' benchmarks/latest_results.json   # lo mismo en la L4 real
+python3 practica/04_costo.py            # dólares por millón de tokens con la corrida real
+make all                                # ruff, tests y el juez contra el servidor falso
+cat benchmarks/terminal_output.txt      # el juez en la L4 real (2026-11-10)
+kill %1                                 # apaga el servidor falso
+```
+
+Los tiempos del servidor falso son inventados: simula unas 12 milésimas por token escrito y casi nada por token leído, y cuenta un token por cada cuatro letras. Las cifras de la GPU de verdad salen de la corrida guardada en `benchmarks/` (vLLM 0.33.0, Gemma 4 E4B, una L4 en Cloud Run, 2026-11-10 18:20 UTC).
+
+---
+
 ## Estructura
 
 ```text
 vllm_lab/        cliente (OpenAI SDK + medición de streaming), CLI común y servidor falso
 experiments/     01 a 05, cada uno con run(base_url) y --mock
+practica/        los fragmentos que se escriben en el video de práctica
 verify_first_server.py   el juez
 tests/           pytest contra el servidor falso
 gcp/             stage_weights.sh, deploy_vllm.sh, teardown.sh
