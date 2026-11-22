@@ -3,6 +3,8 @@
 - **Por qué es relevante:** Si ya llamaste una API de IA, ya sabes casi todo. Aquí pones el modelo de tu lado: Gemma 4 corriendo en una GPU tuya en Google Cloud, con la misma API que ya usas. Tu código cambia una línea, el `base_url`, y a cambio ganas control sobre los datos, la versión del modelo y el costo.
 - **Para quién es:** Desarrolladores que saben Python y han llamado una API de IA, pero nunca levantaron un modelo propio. No hace falta machine learning.
 - **Qué vas a medir:** el tiempo al primer token (TTFT), los tokens por segundo, la diferencia entre leer el prompt (prefill) y escribir la respuesta (decode), y cuánto cuesta un millón de tokens con 1 y con 8 usuarios.
+- **Video de práctica:** [tu primer servidor vLLM con Gemma, escribiendo cada fragmento de `practica/`](https://youtu.be/pYJXpZsEWgg).
+- **Artículo que amplía la práctica:** [Qué guardar de cada respuesta de tu servidor vLLM](https://ykro1.substack.com/p/que-guardar-de-cada-respuesta-vllm).
 - **Ruta completa:** forma parte del [Field Guide: Servir Modelos Abiertos con vLLM](https://github.com/ykro/vllm-for-software-devs-field-guide).
 
 ---
@@ -159,3 +161,4 @@ diagrams/        los tres diagramas (HTML, SVG y PNG)
   3. [La primera palabra a los 0.29 segundos](https://ykro1.substack.com/p/la-primera-palabra-a-los-029-segundos)
   4. [Leer es barato, escribir es caro](https://ykro1.substack.com/p/leer-es-barato-escribir-es-caro)
   5. [Cuánto cuesta un millón de tokens en tu propia GPU](https://ykro1.substack.com/p/cuanto-cuesta-un-millon-de-tokens)
+  6. [Qué guardar de cada respuesta de tu servidor vLLM](https://ykro1.substack.com/p/que-guardar-de-cada-respuesta-vllm)
